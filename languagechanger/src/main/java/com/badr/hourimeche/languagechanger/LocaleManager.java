@@ -59,14 +59,14 @@ public class LocaleManager {
         return Build.VERSION.SDK_INT >= 24 ? config.getLocales().get(0) : config.locale;
     }
 
-    public void setNewLocale(String language, Context context, Class cls) {
+    public static void setNewLocale(String language, Context context, Class cls) {
         LANGUAGE = language;
         LocaleManager.setNewLocale(context, language);
         Intent i = new Intent(context, cls);
         context.startActivity(i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
     }
 
-    public Drawable getLanguageDrawable(Context context) {
+    public static Drawable getLanguageDrawable(Context context) {
         int img = context.getResources().getIdentifier(LANGUAGE, "drawable", context.getPackageName());
         return ContextCompat.getDrawable(context, img);
     }
